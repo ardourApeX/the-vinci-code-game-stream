@@ -70,12 +70,16 @@ h1 {
 #form {
 	vertical-align: middle;
 	width: 5;
-	margin-top: 25%;
+	position: relative;
+	margin-top: 10%;
 	justify-content: center;
 	gap: 0.5rem;
-	padding: 10px;
+	padding: 5px 10px 10px 10px;
 }
 
+#form h1 {
+	font-size: 25px;
+}
 #form input {
 	background-color: transparent;
 	outline: none;
@@ -84,6 +88,7 @@ h1 {
 	width: 80%;
 	font-size: 18px;
 	border-radius: 5px;
+	padding-left: 10px;
 }
 #form input:focus {
 	border-width: 2px;
@@ -93,8 +98,8 @@ h1 {
 	align-self: flex-start;
 }
 .submit-button {
-	margin-top: 3rem;
-	width: 80%;
+	margin-top: 2rem;
+	width: 82%;
 	height: 44px;
 	border-radius: 5px;
 	border: none;
@@ -110,6 +115,10 @@ h1 {
 	font-weight: bold;
 	color: white;
 	transition-duration: 0.4s;
+}
+
+#menu-options {
+	text-transform: unset;
 }
 @media screen and (max-width: 733px) {
 	body {

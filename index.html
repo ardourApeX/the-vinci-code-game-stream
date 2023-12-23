@@ -10,21 +10,19 @@
 <body>
 	<div class="row-flex form">
 		<div class="instruction">
-
 		</div>
 		<div class="form-input">
 			<h1>welcome to da vinci game</h1>
-			<form id="form" class="col-flex">
-				<label>What should we call you?</label>
-				<input required type="text" />
-				<button class="submit-button">Submit</button>
+			<form onsubmit="onFormSubmit(event)" id="form" class="col-flex">
+				<h1>Registration Form</h1>
+				<label for="name">What should we call you?</label>
+				<input id="name" name="name" placeholder="John Doe" required type="text" />
+				<button class="submit-button" type="submit">Submit</button>
 			</form>
 
+
 		</div>
-
-	</div>
-
-	<script src="./src/js/index.mjs" type="module"></script>
+		<script defer src="./src/js/script.js"></script>
 </body>
 
 </html>
