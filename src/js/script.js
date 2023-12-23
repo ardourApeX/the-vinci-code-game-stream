@@ -5,13 +5,14 @@ function onFormSubmit(e) {
 	const formData = new FormData(e.target);
 	const formDataObject = Object.fromEntries(formData.entries());
 	if (formDataObject.name) {
-		document.getElementById('username').innerText = formDataObject.name;
+		document.querySelector('.username').innerText = formDataObject.name;
 	}
 	// window.username = formDataObject.name || 'Guest';
 	changeStepNumber();
 }
 function onOptionSelected(e) {
-	const eventType = e.target.value;
+	console.log(e.target.name);
+	const eventType = e.target.name;
 	switch (eventType) {
 		case 'start': {
 			console.log('start the game');
@@ -22,6 +23,11 @@ function onOptionSelected(e) {
 			break;
 		}
 		case 'changeUsername': {
+			const userNameElem = document.getElementById('username');
+			if (userNameElem) {
+				userNameElem.contentEditable = true;
+				userNameElem.classList.add('no-ellipsis');
+			}
 			console.log('Change the username ');
 			break;
 		}
