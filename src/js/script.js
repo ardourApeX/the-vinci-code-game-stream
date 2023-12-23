@@ -23,10 +23,10 @@ function onOptionSelected(e) {
 			break;
 		}
 		case 'changeUsername': {
-			const userNameElem = document.getElementById('username');
+			const userNameElem = document.querySelector('.username');
 			if (userNameElem) {
 				userNameElem.contentEditable = true;
-				userNameElem.classList.add('no-ellipsis');
+				userNameElem.style.textOverflow = 'unset';
 			}
 			console.log('Change the username ');
 			break;
