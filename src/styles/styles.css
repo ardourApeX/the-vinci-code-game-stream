@@ -1,0 +1,123 @@
+:root {
+	--primary-color: rgb(11, 38, 66);
+	--primary-font-size: 35px;
+	--secondary-font-size: 25px;
+}
+
+body,
+::after,
+::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	height: 100vh;
+	color: var(--primary-color);
+	background-color: aqua;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgb(151, 199, 250);
+	background: linear-gradient(
+		145deg,
+		rgba(151, 199, 250, 1) 0%,
+		rgba(228, 188, 255, 1) 100%
+	);
+}
+
+h1 {
+	font-weight: bold;
+	font-size: var(--primary-font-size);
+}
+.col-flex {
+	display: flex;
+	flex-direction: column;
+}
+.row-flex {
+	display: flex;
+	flex-direction: row;
+}
+
+.form {
+	height: 30rem;
+	max-width: 70rem;
+	width: 100%;
+	background-color: white;
+	border-radius: 15px;
+	justify-content: space-between;
+}
+.instruction,
+.form-input {
+	width: 50%;
+	padding: 10px;
+}
+.instruction {
+	/* background-color: yellow; */
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.form-input {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.form-input h1 {
+	text-transform: capitalize;
+}
+
+#form {
+	vertical-align: middle;
+	width: 5;
+	margin-top: 25%;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 10px;
+}
+
+#form input {
+	background-color: transparent;
+	outline: none;
+	border: 1px solid rgb(0, 0, 0);
+	height: 44px;
+	width: 80%;
+	font-size: 18px;
+	border-radius: 5px;
+}
+#form input:focus {
+	border-width: 2px;
+}
+#form label {
+	font-size: 25px;
+	align-self: flex-start;
+}
+.submit-button {
+	margin-top: 3rem;
+	width: 80%;
+	height: 44px;
+	border-radius: 5px;
+	border: none;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+	background-color: white;
+	font-weight: bold;
+	font-size: var(--secondary-font-size);
+	cursor: pointer;
+}
+.submit-button:hover {
+	background-color: var(--primary-color);
+	font-weight: bold;
+	color: white;
+	transition-duration: 0.4s;
+}
+@media screen and (max-width: 733px) {
+	body {
+		background: red !important;
+		background: linear-gradient(
+			145deg,
+			rgb(2, 2, 2) 0%,
+			rgb(221, 221, 221) 100%
+		);
+	}
+}

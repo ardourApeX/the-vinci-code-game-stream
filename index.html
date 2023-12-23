@@ -1,14 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<link href="./styles.css" rel="stylesheet" />
-		<title>JavaScript Sandbox</title>
-		<meta charset="UTF-8" />
-	</head>
 
-	<body>
-		<h1>Welcome to The Vinci Code.</h1>
-		<section id="game"></section>
-		<script src="./index.mjs" type="module"></script>
-	</body>
+<head>
+	<link href="./src/styles/styles.css" rel="stylesheet" />
+	<title>JavaScript Sandbox</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div class="row-flex form">
+		<div class="instruction">
+
+		</div>
+		<div class="form-input">
+			<h1>welcome to da vinci game</h1>
+			<form id="form" class="col-flex">
+				<label>What should we call you?</label>
+				<input required type="text" />
+				<button class="submit-button">Submit</button>
+			</form>
+
+		</div>
+
+	</div>
+
+	<script src="./src/js/index.mjs" type="module"></script>
+</body>
+
 </html>
