@@ -8,19 +8,31 @@
 </head>
 
 <body>
-	<div class="row-flex form">
+	<div class="row-flex app">
 		<div class="instruction">
 		</div>
-		<div class="form-input">
+		<div class="active-step steps step-0 form-input">
 			<h1>welcome to da vinci game</h1>
-			<form onsubmit="onFormSubmit(event)" id="form" class="col-flex">
+			<form onsubmit="onFormSubmit(event)" class="form col-flex">
 				<h1>Registration Form</h1>
 				<label for="name">What should we call you?</label>
-				<input id="name" name="name" placeholder="John Doe" required type="text" />
+				<input id="name" name="name" placeholder="John Doe" type="text" />
 				<button class="submit-button" type="submit">Submit</button>
 			</form>
-
-
+		</div>
+		<div class="steps step-1 form-input">
+			<h1>welcome
+				<span id="username">Guest</span>
+			</h1>
+			<div onclick="onOptionSelected(event)" class="col-flex form second-form">
+				<label for="name">Please select an option from below</label>
+				<button name="start" class="submit-button" type="submit">Start the
+					Game</button>
+				<button name="leaderboard" class="submit-button" type="submit">View
+					Leaderboard</button>
+				<button name="changeName" class="submit-button" type="submit">Change
+					Username</button>
+			</div>
 		</div>
 		<script defer src="./src/js/script.js"></script>
 </body>
