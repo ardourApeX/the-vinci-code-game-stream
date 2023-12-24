@@ -8,22 +8,21 @@
 </head>
 
 <body>
-	<div class="row-flex app">
-		<div class=" steps step-0 form-input">
-			<h1>welcome to da vinci game</h1>
+	<div class="col-flex app">
+		<h1 class="heading">welcome
+			<span class="username">to da vinci game</span>
+		</h1>
+		<div class=" active-step content step-0 steps">
 			<form onsubmit="onFormSubmit(event)" class="form col-flex">
 				<h1>Registration Form</h1>
-				<label for="name">What should we call you?</label>
+				<label class="label" for="name">What should we call you?</label>
 				<input id="name" name="name" placeholder="John Doe" type="text" />
 				<button class="submit-button" type="submit">Submit</button>
 			</form>
 		</div>
-		<div class="steps step-1 form-input">
-			<h1>welcome
-				<span class="username">Guest</span>
-			</h1>
-			<div onclick="onOptionSelected(event)" class="col-flex form second-form">
-				<label for="name">Please select an option from below</label>
+		<div onclick="onOptionSelected(event)" class="steps step-1 content">
+			<label class="label" for="name">Please select an option from below</label>
+			<div class="col-flex buttons">
 				<button name="start" class="submit-button" type="submit">Start the
 					Game</button>
 				<button name="leaderboard" class="submit-button" type="submit">View
@@ -32,39 +31,34 @@
 					Username</button>
 			</div>
 		</div>
-		<div class="steps step-2 form-input ">
-			<div class="col-flex  form second-form  countdown">
-				<label id="game-message" for="name">Remember the sequence of number</label>
-				<div class="animate">
+		<div class="steps content  step-2 form-input countdown">
+			<label id="game-message" for="name">Remember the sequence of number</label>
+			<div class="animate">
+			</div>
+			<div id="numpad" class="hidden num-pad-parent col-flex">
+				<div class="num-pad-row row-flex">
+					<button name="1" value=1 class="submit-button num-pad">1</button>
+					<button name="2" value=2 class="submit-button num-pad">2</button>
+					<button name="3" value=3 class="submit-button num-pad">3</button>
 				</div>
-				<div id="numpad" class="hidden num-pad-parent col-flex">
-					<div class="num-pad-row row-flex">
-						<button name="1" value=1 class="submit-button num-pad">1</button>
-						<button name="2" value=2 class="submit-button num-pad">2</button>
-						<button name="3" value=3 class="submit-button num-pad">3</button>
-					</div>
-					<div class="num-pad-row row-flex">
-						<button name="4" value=4 class="submit-button num-pad">4</button>
-						<button name="5" value=5 class="submit-button num-pad">5</button>
-						<button name="6" value=6 class="submit-button num-pad">6</button>
-					</div>
-					<div class="num-pad-row row-flex">
-						<button name="7" value=7 class="submit-button num-pad">7</button>
-						<button name="8" value=8 class="submit-button num-pad">8</button>
-						<button name="9" value=9 class="submit-button num-pad">9</button>
-					</div>
-					<div class="num-pad-row row-flex">
-						<button name="10" value=0 class="submit-button num-pad">0</button>
-					</div>
+				<div class="num-pad-row row-flex">
+					<button name="4" value=4 class="submit-button num-pad">4</button>
+					<button name="5" value=5 class="submit-button num-pad">5</button>
+					<button name="6" value=6 class="submit-button num-pad">6</button>
+				</div>
+				<div class="num-pad-row row-flex">
+					<button name="7" value=7 class="submit-button num-pad">7</button>
+					<button name="8" value=8 class="submit-button num-pad">8</button>
+					<button name="9" value=9 class="submit-button num-pad">9</button>
+				</div>
+				<div class="num-pad-row row-flex">
+					<button name="10" value=0 class="submit-button num-pad">0</button>
 				</div>
 			</div>
+
 		</div>
-		<div class="active-step steps step-0 form-input leaderboard">
-			<h1>Leaderboard</h1>
-			<div class="leaderboard-table">
-
-			</div>
-
+		<div class=" leaderboard steps content step-3 form-input">
+			<h1 class="label">Leaderboard</h1>
 		</div>
 		<script defer src="./src/js/index.mjs"> </script>
 		<script defer src="./src/js/script.js"></script>

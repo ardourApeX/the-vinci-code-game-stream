@@ -1,5 +1,13 @@
 window.currentStep = 0;
 window.maxStep = 4;
+window.username = 'Guest';
+const leaderboard = localStorage.getItem('leaderboard');
+
+if (leaderboard) {
+	window.leaderboard = JSON.parse(leaderboard);
+} else {
+	window.leaderboard = [];
+}
 const userNameElem = document.querySelector('.username');
 
 function onFormSubmit(e) {
@@ -7,17 +15,14 @@ function onFormSubmit(e) {
 	const formData = new FormData(e.target);
 	const formDataObject = Object.fromEntries(formData.entries());
 	console.log(formDataObject);
-	if (formDataObject.name) {
-		displayUsername(formDataObject.name);
-	}
-	// window.username = formDataObject.name || 'Guest';
+	displayUsername(formDataObject.name || 'Guest');
+	window.username = formDataObject.name || 'Guest';
 	changeStepNumber();
 }
 function displayUsername(name) {
 	document.querySelector('.username').innerText = name;
 }
 function onOptionSelected(e) {
-	console.log(e.target.name);
 	const eventType = e.target.name;
 	switch (eventType) {
 		case 'start': {
@@ -27,7 +32,8 @@ function onOptionSelected(e) {
 			break;
 		}
 		case 'leaderboard': {
-			console.log('Show leaderboard');
+			changeStepNumber(3);
+			Game.renderLeaderBoard();
 			break;
 		}
 		case 'changeUsername': {
@@ -63,6 +69,7 @@ document.addEventListener('click', (e) => {
 		userNameElem.contentEditable
 	) {
 		displayUsername(userNameElem.innerText);
+		window.username = userNameElem.innerText;
 		userNameElem.contentEditable = false;
 	}
 });

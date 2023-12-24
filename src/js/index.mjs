@@ -13,6 +13,7 @@ class Game {
 		this.numpad = document.getElementById('numpad');
 		this.messageLabel = document.getElementById('game-message');
 		this.generatedNumbers = [];
+		this.leaderboard = [];
 		this.enteredNumbers = [];
 		this.level = 1;
 		this.score = 0;
@@ -21,61 +22,7 @@ class Game {
 		);
 	}
 	static renderLeaderBoard() {
-		const leaderboard = [
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-			{
-				name: 'Joy',
-				score: 9,
-			},
-		];
-		const table = document.querySelector('.leaderboard-table');
+		const table = document.querySelector('.leaderboard');
 		let innerHTML = '';
 		innerHTML += `
 					<tr>
@@ -83,14 +30,14 @@ class Game {
 						<th>Score</th>
 					</tr>`;
 
-		leaderboard.forEach((details) => {
+		window.leaderboard.forEach((details) => {
 			innerHTML += `
 					<tr>
 						<td>${details.name}</td>
 						<td>${details.score}</td>
 					</tr>`;
 		});
-		table.innerHTML = `<table>${innerHTML}</table>`;
+		table.innerHTML += `<div class="leaderboard-table"><table>${innerHTML}</table></div>`;
 	}
 	randomNumber() {
 		return Math.floor(Math.random() * 10);
@@ -176,10 +123,19 @@ class Game {
 			this.toggleVisibility(this.numpad);
 			this.gameLoop();
 		} else {
-			this.messageLabel.innerText = `Wrong selection. Game Over !!`;
+			this.showGameOver();
 		}
 	}
-	showGameOver() {}
+	showGameOver() {
+		this.messageLabel.innerText = `Wrong selection. Game Over !!`;
+		this.toggleVisibility(this.numpad);
+		window.leaderboard.push({ name: window.username, score: this.score });
+		localStorage.setItem('leaderboard', JSON.stringify(window.leaderboard));
+		setTimeout(() => {
+			window.changeStepNumber(3);
+			Game.renderLeaderBoard();
+		}, 1000);
+	}
 	gameLoop() {
 		this.generateNumbersForLevel();
 		// this.displayNumbersForLevel();
