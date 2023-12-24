@@ -1,21 +1,29 @@
 window.currentStep = 0;
 window.maxStep = 4;
+const userNameElem = document.querySelector('.username');
 
 function onFormSubmit(e) {
 	e.preventDefault();
 	const formData = new FormData(e.target);
 	const formDataObject = Object.fromEntries(formData.entries());
+	console.log(formDataObject);
 	if (formDataObject.name) {
-		document.querySelector('.username').innerText = formDataObject.name;
+		displayUsername(formDataObject.name);
 	}
 	// window.username = formDataObject.name || 'Guest';
 	changeStepNumber();
+}
+function displayUsername(name) {
+	document.querySelector('.username').innerText = name;
 }
 function onOptionSelected(e) {
 	console.log(e.target.name);
 	const eventType = e.target.name;
 	switch (eventType) {
 		case 'start': {
+			changeStepNumber();
+			const newGame = new Game();
+			newGame.start();
 			break;
 		}
 		case 'leaderboard': {
@@ -23,21 +31,21 @@ function onOptionSelected(e) {
 			break;
 		}
 		case 'changeUsername': {
-			const userNameElem = document.querySelector('.username');
 			if (userNameElem) {
 				userNameElem.contentEditable = true;
 				userNameElem.style.textOverflow = 'unset';
+				userNameElem.focus();
 			}
 			break;
 		}
 		default: {
-			alert('Invalid selection');
 			break;
 		}
 	}
 }
 function changeStepNumber(newStepNumber = window.currentStep + 1) {
 	const activeStep = document.querySelector('.active-step');
+
 	if (activeStep) {
 		activeStep.classList.remove('active-step');
 	}
@@ -45,19 +53,16 @@ function changeStepNumber(newStepNumber = window.currentStep + 1) {
 	if (newActiveStep) {
 		newActiveStep.classList.add('active-step');
 	}
+	window.currentStep += 1;
 }
 
-function onKeyPressed(e) {
-	console.log(e.target.name);
-}
-
-const elem = document.querySelector('.animate');
-const newGame = new Game(elem);
-newGame.start();
-// setInterval(() => {
-// 	elem.classList.remove('glow');
-// 	const temp = Math.floor(Math.random() * 10);
-// 	console.log(temp);
-// 	elem.innerText = temp;
-// 	elem.classList.add('glow');
-// }, 2000);
+document.addEventListener('click', (e) => {
+	if (
+		e.target.name !== 'changeUsername' &&
+		!e.target.classList.contains('username') &&
+		userNameElem.contentEditable
+	) {
+		displayUsername(userNameElem.innerText);
+		userNameElem.contentEditable = false;
+	}
+});

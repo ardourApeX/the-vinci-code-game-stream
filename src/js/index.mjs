@@ -13,9 +13,11 @@ class Game {
 		this.numpad = document.getElementById('numpad');
 		this.generatedNumbers = [];
 		this.enteredNumbers = [];
-		this.level = 2;
+		this.level = 1;
 		this.score = 0;
-		this.numpad.addEventListener('click', this.onButtonPressed(event));
+		this.numpad.addEventListener('click', (event) =>
+			this.onButtonPressed(event)
+		);
 	}
 	randomNumber() {
 		return Math.floor(Math.random() * 10);
@@ -28,28 +30,22 @@ class Game {
 	start() {
 		this.gameLoop();
 	}
-	// displayMenu() {
-	// 	this.container.innerHTML = `Welcome ${this.name},
-	// <ol>
-	//   <li data-val="1">Start New Game</li>
-	//   <li data-val="2">See Leaderboard</li>
-	//   <li data-val="3">Update Name</li>
-	// </ol>`;
-	// 	this.container.removeEventListener('click', this.handleMenuClick);
-	// 	this.container.addEventListener('click', this.handleMenuClick);
-	// }
 
 	generateNumbersForLevel() {
 		for (let i = 0; i < this.level; i++) {
 			this.generatedNumbers.push(this.randomNumber());
 		}
-		this.container.classList.add('glow');
 		this.displayCountDown();
 	}
 
 	displayCountDown() {
 		let index = 0;
-		console.log(this.generatedNumbers);
+		this.container.innerText = this.generatedNumbers[index];
+		if (index == 0) {
+			console.log('inside ');
+			this.container.classList.add('glow');
+			index++;
+		}
 		const countDownId = setInterval(() => {
 			if (index < this.level) {
 				this.container.innerText = this.generatedNumbers[index];
@@ -65,7 +61,6 @@ class Game {
 		this.toggleVisibility(this.numpad);
 	}
 	toggleVisibility(elem) {
-		console.log(elem.classList);
 		if (elem.classList.contains('hidden')) {
 			elem.classList.remove('hidden');
 		} else {
@@ -73,31 +68,27 @@ class Game {
 		}
 	}
 	onButtonPressed(e) {
-		const userinput = e.target.name;
-		// this.userImput.push(userImput);
+		this.enteredNumbers.push(Number(e.target.value));
+		if (this.enteredNumbers.length === this.level) {
+			this.resultHandler(this.verifyLevel());
+		}
 	}
-	// displayNumbersForLevel() {
-	// 	for (let i = 0; i < this.level; i++) {
-	// 		alert(this.generatedNumbers[i]);
-	// 	}
-	// }
-	// getNumbersFromUser() {
-	// 	for (let i = 0; i < this.level; i++) {
-	// 		let enteredValue = prompt(
-	// 			'Enter values in order one at a time: (press enter after every value)'
-	// 		);
-	// 		if (enteredValue === '' || enteredValue === null) {
-	// 			enteredValue = NaN;
-	// 		}
-	// 		this.enteredNumbers.push(Number(enteredValue));
-	// 	}
-	// }
-	// verifyLevel() {
-	// 	for (let i = 0; i < this.level; i++) {
-	// 		if (this.enteredNumbers[i] !== this.generatedNumbers[i]) return false;
-	// 	}
-	// 	return true;
-	// }
+
+	verifyLevel() {
+		for (let i = 0; i < this.level; i++) {
+			if (this.enteredNumbers[i] !== this.generatedNumbers[i]) return false;
+		}
+		return true;
+	}
+	resultHandler(cleared) {
+		if (cleared) {
+			console.log(`Level ${this.level} cleared`);
+			this.updateLevel(this.level + 1);
+		} else {
+			console.log('Game Over!!');
+		}
+	}
+	showGameOver() {}
 	gameLoop() {
 		this.generateNumbersForLevel();
 		// this.displayNumbersForLevel();
