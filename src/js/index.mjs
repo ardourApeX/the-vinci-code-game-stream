@@ -11,6 +11,7 @@ class Game {
 	constructor() {
 		this.container = document.querySelector('.animate');
 		this.numpad = document.getElementById('numpad');
+		this.messageLabel = document.getElementById('game-message');
 		this.generatedNumbers = [];
 		this.enteredNumbers = [];
 		this.level = 1;
@@ -33,22 +34,33 @@ class Game {
 
 	generateNumbersForLevel() {
 		for (let i = 0; i < this.level; i++) {
+			console.log('Generating number');
 			this.generatedNumbers.push(this.randomNumber());
 		}
+		console.log('these are numbers  ', this.generatedNumbers);
+
 		this.displayCountDown();
 	}
 
 	displayCountDown() {
 		let index = 0;
-		this.container.innerText = this.generatedNumbers[index];
-		if (index == 0) {
-			console.log('inside ');
-			this.container.classList.add('glow');
-			index++;
-		}
+		console.log('here i am inside coutndown');
+
 		const countDownId = setInterval(() => {
+			console.log('inside setinterval', {
+				index,
+				level: this.level,
+				countDownId,
+			});
 			if (index < this.level) {
 				this.container.innerText = this.generatedNumbers[index];
+				if (index == 0) {
+					console.log('inside ');
+					this.messageLabel.innerText = 'Remember the sequence of number';
+
+					this.container.classList.add('glow');
+					this.container.classList.remove('hidden');
+				}
 				index++;
 			} else {
 				clearInterval(countDownId);
@@ -59,6 +71,11 @@ class Game {
 	askForUserInput() {
 		this.toggleVisibility(this.container);
 		this.toggleVisibility(this.numpad);
+		if (this.container.classList.contains('hidden')) {
+			this.messageLabel.innerText = 'Press the buttons in the same sequence';
+		} else {
+			this.messageLabel.innerText = 'Remember the sequence of number';
+		}
 	}
 	toggleVisibility(elem) {
 		if (elem.classList.contains('hidden')) {
@@ -82,10 +99,12 @@ class Game {
 	}
 	resultHandler(cleared) {
 		if (cleared) {
-			console.log(`Level ${this.level} cleared`);
+			this.messageLabel.innerText = `Level ${this.level} cleared`;
 			this.updateLevel(this.level + 1);
+			this.toggleVisibility(this.numpad);
+			this.gameLoop();
 		} else {
-			console.log('Game Over!!');
+			this.messageLabel.innerText = `Wrong selection. Game Over !!`;
 		}
 	}
 	showGameOver() {}

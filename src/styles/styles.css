@@ -149,6 +149,7 @@ h1 {
 	align-self: center;
 	margin: auto;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
 }
 .num-pad-row button {
@@ -165,16 +166,6 @@ h1 {
 }
 #menu-options {
 	text-transform: unset !important;
-}
-@media screen and (max-width: 733px) {
-	body {
-		background: red !important;
-		background: linear-gradient(
-			145deg,
-			rgb(2, 2, 2) 0%,
-			rgb(221, 221, 221) 100%
-		);
-	}
 }
 
 .animate {
@@ -225,4 +216,18 @@ h1 {
 		filter: brightness(1) saturate(1);
 		scale: 0;
 	}
+}
+
+/* Media query for screens 600px and above */
+@media (min-width: 601px) {
+	.app {
+		max-width: 30rem;
+	}
+	/* Additional styles for screens 600px and above */
+}
+@media (max-width: 600px) {
+	.app {
+		max-width: 100rem;
+	}
+	/* Additional styles for screens less than 600px */
 }
