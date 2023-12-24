@@ -164,6 +164,20 @@ h1 {
 	align-items: center;
 	justify-content: center;
 }
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td,
+th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
 #menu-options {
 	text-transform: unset !important;
 }
@@ -198,6 +212,12 @@ h1 {
 
 .hidden {
 	display: none !important;
+}
+
+.leaderboard-table {
+	max-height: 76%;
+	border: 1px solid var(--primary-color);
+	overflow-y: scroll;
 }
 
 @keyframes animate-glow {

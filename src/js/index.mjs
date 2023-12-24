@@ -20,6 +20,78 @@ class Game {
 			this.onButtonPressed(event)
 		);
 	}
+	static renderLeaderBoard() {
+		const leaderboard = [
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+			{
+				name: 'Joy',
+				score: 9,
+			},
+		];
+		const table = document.querySelector('.leaderboard-table');
+		let innerHTML = '';
+		innerHTML += `
+					<tr>
+						<th>Name</th>
+						<th>Score</th>
+					</tr>`;
+
+		leaderboard.forEach((details) => {
+			innerHTML += `
+					<tr>
+						<td>${details.name}</td>
+						<td>${details.score}</td>
+					</tr>`;
+		});
+		table.innerHTML = `<table>${innerHTML}</table>`;
+	}
 	randomNumber() {
 		return Math.floor(Math.random() * 10);
 	}
