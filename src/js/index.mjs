@@ -118,6 +118,7 @@ class Game {
 	}
 	resultHandler(cleared) {
 		if (cleared) {
+			this.score += 1;
 			this.messageLabel.innerText = `Level ${this.level} cleared`;
 			this.updateLevel(this.level + 1);
 			this.toggleVisibility(this.numpad);

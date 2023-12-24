@@ -246,6 +246,8 @@ th {
 
 @media only screen and (max-width: 474px) {
 	body {
-		/*  */
+		/* background-color: black;
+		background: black;
+		border: 10px solid red; */
 	}
 }
