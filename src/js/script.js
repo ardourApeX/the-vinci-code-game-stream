@@ -1,5 +1,6 @@
 window.currentStep = 0;
 window.maxStep = 4;
+
 function onFormSubmit(e) {
 	e.preventDefault();
 	const formData = new FormData(e.target);
@@ -15,7 +16,6 @@ function onOptionSelected(e) {
 	const eventType = e.target.name;
 	switch (eventType) {
 		case 'start': {
-			console.log('start the game');
 			break;
 		}
 		case 'leaderboard': {
@@ -28,7 +28,6 @@ function onOptionSelected(e) {
 				userNameElem.contentEditable = true;
 				userNameElem.style.textOverflow = 'unset';
 			}
-			console.log('Change the username ');
 			break;
 		}
 		default: {
@@ -47,3 +46,18 @@ function changeStepNumber(newStepNumber = window.currentStep + 1) {
 		newActiveStep.classList.add('active-step');
 	}
 }
+
+function onKeyPressed(e) {
+	console.log(e.target.name);
+}
+
+const elem = document.querySelector('.animate');
+const newGame = new Game(elem);
+newGame.start();
+// setInterval(() => {
+// 	elem.classList.remove('glow');
+// 	const temp = Math.floor(Math.random() * 10);
+// 	console.log(temp);
+// 	elem.innerText = temp;
+// 	elem.classList.add('glow');
+// }, 2000);

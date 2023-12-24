@@ -52,6 +52,7 @@ h1 {
 .form-input {
 	width: 50%;
 	padding: 10px;
+	border: 1px solid red;
 }
 .instruction {
 	/* background-color: yellow; */
@@ -140,7 +141,26 @@ h1 {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-
+.num-pad-parent {
+	gap: 1rem;
+	display: flex;
+	align-self: center;
+	margin: auto;
+	justify-content: center;
+	width: 100%;
+}
+.num-pad-row button {
+	height: 44px;
+	width: 44px;
+}
+.num-pad-row {
+	width: 40%;
+	justify-content: space-between;
+}
+.num-pad-row:last-child {
+	align-items: center;
+	justify-content: center;
+}
 #menu-options {
 	text-transform: unset !important;
 }
@@ -152,5 +172,54 @@ h1 {
 			rgb(2, 2, 2) 0%,
 			rgb(221, 221, 221) 100%
 		);
+	}
+}
+
+.animate {
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	padding: 20px;
+	margin-top: 10%;
+	border-radius: 50%;
+	height: 4rem;
+	align-items: center;
+	justify-content: center;
+	width: 4rem;
+	animation-name: animate-fade;
+	animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+	animation-fill-mode: both;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* Glow In */
+.animate.glow {
+	animation-name: animate-glow;
+	animation-timing-function: ease-in-out;
+	display: flex;
+}
+.countdown {
+	align-items: center;
+	justify-content: center;
+}
+
+.hidden {
+	display: none !important;
+}
+
+@keyframes animate-glow {
+	0% {
+		opacity: 0;
+		filter: brightness(3) saturate(3);
+		scale: 0;
+	}
+	50% {
+		opacity: 1;
+		filter: brightness(1) saturate(1);
+		scale: 1.4;
+	}
+	100% {
+		opacity: 0;
+		filter: brightness(1) saturate(1);
+		scale: 0;
 	}
 }

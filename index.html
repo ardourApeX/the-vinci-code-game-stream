@@ -11,7 +11,7 @@
 	<div class="row-flex app">
 		<div class="instruction">
 		</div>
-		<div class="active-step steps step-0 form-input">
+		<!-- <div class="active-step steps step-0 form-input">
 			<h1>welcome to da vinci game</h1>
 			<form onsubmit="onFormSubmit(event)" class="form col-flex">
 				<h1>Registration Form</h1>
@@ -33,9 +33,37 @@
 				<button name="changeUsername" class="submit-button" type="submit">Change
 					Username</button>
 			</div>
+		</div> -->
+		<div class="active-step steps step-3 form-input ">
+			<div onclick="onKeyPressed(event)" class="col-flex  form second-form  countdown">
+				<label for="name">Select number in same order</label>
+				<div class="animate glow">
+					2
+				</div>
+				<div id="numpad" class="num-pad-parent col-flex hidden">
+					<div class="num-pad-row row-flex">
+						<button name="1" class="submit-button num-pad">1</button>
+						<button name="2" class="submit-button num-pad">2</button>
+						<button name="3" class="submit-button num-pad">3</button>
+					</div>
+					<div class="num-pad-row row-flex">
+						<button name="4" class="submit-button num-pad">4</button>
+						<button name="5" class="submit-button num-pad">5</button>
+						<button name="6" class="submit-button num-pad">6</button>
+					</div>
+					<div class="num-pad-row row-flex">
+						<button name="7" class="submit-button num-pad">7</button>
+						<button name="8" class="submit-button num-pad">8</button>
+						<button name="9" class="submit-button num-pad">9</button>
+					</div>
+					<div class="num-pad-row row-flex">
+						<button name="10" class="submit-button num-pad">0</button>
+					</div>
+				</div>
+			</div>
 		</div>
+		<script defer src="./src/js/index.mjs"> </script>
 		<script defer src="./src/js/script.js"></script>
-		<script defer src="./src/js/modal.mjs" type="module"> </script>
 </body>
 
 </html>
